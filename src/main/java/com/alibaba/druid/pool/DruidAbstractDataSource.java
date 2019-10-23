@@ -1637,6 +1637,16 @@ public abstract class DruidAbstractDataSource extends WrapperAdapter implements 
 
     protected abstract void recycle(DruidPooledConnection pooledConnection) throws SQLException;
 
+    /**
+     * 真正创建connection的方法。
+     *
+     * Connection conn = driver.connect(url, info);
+     *
+     * @param url
+     * @param info
+     * @return
+     * @throws SQLException
+     */
     public Connection createPhysicalConnection(String url, Properties info) throws SQLException {
         Connection conn;
         if (getProxyFilters().size() == 0) {
